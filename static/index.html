@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MindVideo-2API 视频生成面板</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="header">
+                <h2>MindVideo-2API</h2>
+                <p>AI 视频生成</p>
+            </div>
+
+            <div class="form-group">
+                <label for="api-key">API Key</label>
+                <input type="password" id="api-key" placeholder="请输入您的 API Key" value="1">
+            </div>
+
+            <div class="form-group">
+                <label for="model-select">模型 (Model)</label>
+                <select id="model-select"></select>
+            </div>
+            
+            <div class="form-group">
+                <label for="ratio-select">视频比例 (Ratio)</label>
+                <select id="ratio-select">
+                    <option value="720x1280">9:16 (竖屏)</option>
+                    <option value="1280x720">16:9 (横屏)</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="prompt-input">提示词 (Prompt)</label>
+                <textarea id="prompt-input" rows="8" placeholder="输入您的视频描述..."></textarea>
+            </div>
+
+            <button id="generate-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="icon"><path d="M3.25 4A2.25 2.25 0 001 6.25v7.5A2.25 2.25 0 003.25 16h13.5A2.25 2.25 0 0019 13.75v-7.5A2.25 2.25 0 0016.75 4H3.25zM10 12.5a.75.75 0 00.75-.75v-3.5a.75.75 0 00-1.5 0v3.5a.75.75 0 00.75.75zM5.75 12.5a.75.75 0 00.75-.75v-3.5a.75.75 0 00-1.5 0v3.5a.75.75 0 00.75.75zM14.25 12.5a.75.75 0 00.75-.75v-3.5a.75.75 0 00-1.5 0v3.5a.75.75 0 00.75.75z"></path></svg>
+                <span>生成视频</span>
+            </button>
+        </div>
+        
+        <div class="main-content">
+            <div id="result-panel">
+                <div id="placeholder" class="placeholder">
+                    <p>请在左侧配置参数并开始生成</p>
+                </div>
+                <div id="spinner" class="spinner hidden"></div>
+                
+                <!-- 进度条 -->
+                <div id="progress-container" class="progress-container hidden">
+                    <div class="progress-bar-background">
+                        <div id="progress-bar" class="progress-bar"></div>
+                    </div>
+                    <span id="progress-text" class="progress-text"></span>
+                </div>
+
+                <div id="error-message" class="error hidden"></div>
+                <div id="video-container" class="hidden">
+                    <video id="result-video" controls autoplay loop></video>
+                    <div class="result-url-container">
+                        <input type="text" id="result-url" readonly>
+                        <button id="copy-url-btn">复制链接</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/static/script.js"></script>
+</body>
+</html>

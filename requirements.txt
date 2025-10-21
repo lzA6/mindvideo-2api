@@ -1,0 +1,8 @@
+# /requirements.txt
+fastapi
+uvicorn[standard]
+pydantic-settings
+python-dotenv
+cloudscraper
+loguru
+httpx
